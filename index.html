@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://tensorflow.github.io/magenta-js/music/demos/visualizer.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <link rel="stylesheet" href="./Visualizer_files/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+  <title>Visualizer</title>
+  <style>
+    input[type="file"] {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      cursor: pointer;
+      display: none;
+    }
+  </style>
+</head>
+
+<bodyv>
+  <section>
+    <p>What Tune Say We Play?</p>
+    <button id="urlBtn" style="display: none"></button>
+    <button id="seqBtn" style="display: none"></button>
+    <label class="button">
+      load file
+      <input type="file" id="fileInput">
+    </label>
+    <br><br>
+    <button id="playBtn" disabled="">wait...</button>
+    <span class="input">
+      <b>Tempo:</b>
+      <input id="tempoInput" value="100" type="range" min="20" max="240" step="1">
+      <span id="tempoValue"></span>
+    </span>
+  </section>
+  <section>
+    <div class="visualizer-container" id="container2">
+      <svg id="svg"></svg>
+    </div>
+  </section>
+  <section style="display: none">
+    <div class="visualizer-container" id="container">
+      <canvas id="canvas"></canvas>
+    </div>
+  </section>
+  <div></div>
+  <section style="position: relative; ">
+    <img src="Visualizer_files/pm_no_arm.svg" width="400" height="400"
+    style="position: absolute; bottom: 0; left: 0">
+    <img src="Visualizer_files/pm_only_arm.svg" width="400" height="400" id = "arms" 
+    style="position: absolute; bottom: 0px; left: 0;">
+    <div></div>
+    <img src="Visualizer_files/legs_1.svg" width="400" height="400" id = "leg-1"
+    style="position: absolute; bottom: 0; left: 400px">
+    <img src="Visualizer_files/legs_2.svg" width="400" height="400" id = "leg-2" 
+    style="position: absolute; bottom: 0px; left: 400px;">
+        <img src="Visualizer_files/body.svg" width="400" height="400" id="body"
+    style="position: absolute; bottom: 0; left: 400px">
+    <img src="Visualizer_files/head.svg" width="400" height="400" id = "head" 
+    style="position: absolute; bottom: 0px; left: 400px;">
+  </section>
+  
+  <script type="text/javascript">
+      function anim() {
+        var arms = document.getElementById("arms");
+        var leg1 = document.getElementById("leg-1");
+        var leg2 = document.getElementById("leg-2");
+        var head = document.getElementById("head");
+        var body = document.getElementById("body");
+
+        var rect = document.getElementsByClassName("active");
+        if (rect.length > 0) {
+          var y = rect[0].getBoundingClientRect().y
+          var diff = y/20;
+          if (diff > 0){
+            arms.style.bottom = diff + 'px';
+            // leg1.style.transform = 'rotate(-' + diff + 'deg)';
+            // leg2.style.transform = 'rotate(-' + diff + 'deg)';
+            // head.style.transform = 'rotate(' + diff + 'deg)';
+
+            leg1.style.bottom = y/5 + "px";
+            leg2.style.bottom = y/5 + "px";
+            body.style.bottom = y/5 + "px";
+            head.style.bottom = y/5 + "px";
+          }
+        }
+        else {
+          console.log("no active elem");
+        }
+      }
+      window.setInterval(anim, 100);
+  </script>
+
+
+
+  <script src="./Visualizer_files/visualizer_bundle.js"></script>
+  <script src="./Visualizer_files/edits.js"></script>
+
+
+</body></html>
