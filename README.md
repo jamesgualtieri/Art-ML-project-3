@@ -10,4 +10,4 @@ RNN Audio Generation
 
 The Result is produced using the [Magenta](https://github.com/tensorflow/magenta) project.
 
-
+Live playback of midi file with animation [here](https://www.jamesgualtieri.com/Art-ML-project-3/index.html)
