@@ -52,11 +52,7 @@
     <img src="Visualizer_files/pm_only_arm.svg" width="400" height="400" id = "arms" 
     style="position: absolute; bottom: 0px; left: 0;">
     <div></div>
-    <img src="Visualizer_files/legs_1.svg" width="400" height="400" id = "leg-1"
-    style="position: absolute; bottom: 0; left: 400px">
-    <img src="Visualizer_files/legs_2.svg" width="400" height="400" id = "leg-2" 
-    style="position: absolute; bottom: 0px; left: 400px;">
-        <img src="Visualizer_files/body.svg" width="400" height="400" id="body"
+    <img src="Visualizer_files/body.svg" width="400" height="400" id="body"
     style="position: absolute; bottom: 0; left: 400px">
     <img src="Visualizer_files/head.svg" width="400" height="400" id = "head" 
     style="position: absolute; bottom: 0px; left: 400px;">
@@ -65,10 +61,7 @@
   <script type="text/javascript">
       function anim() {
         var arms = document.getElementById("arms");
-        var leg1 = document.getElementById("leg-1");
-        var leg2 = document.getElementById("leg-2");
         var head = document.getElementById("head");
-        var body = document.getElementById("body");
 
         var rect = document.getElementsByClassName("active");
         if (rect.length > 0) {
@@ -76,14 +69,11 @@
           var diff = y/20;
           if (diff > 0){
             arms.style.bottom = diff + 'px';
+            var rot = -5 + y/50
             // leg1.style.transform = 'rotate(-' + diff + 'deg)';
             // leg2.style.transform = 'rotate(-' + diff + 'deg)';
-            // head.style.transform = 'rotate(' + diff + 'deg)';
-
-            leg1.style.bottom = y/5 + "px";
-            leg2.style.bottom = y/5 + "px";
-            body.style.bottom = y/5 + "px";
-            head.style.bottom = y/5 + "px";
+            head.style.transform = 'rotate(' + rot + 'deg)';
+            // head.style.bottom = (y/20 - 10) + "px";
           }
         }
         else {
