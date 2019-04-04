@@ -47,10 +47,16 @@
   </section>
   <div></div>
   <section style="position: relative; ">
-    <img src="Visualizer_files/pm_no_arm.svg" width="400" height="400"
+    <img src="Visualizer_files/piano.svg" width="400" height="400"
     style="position: absolute; bottom: 0; left: 0">
-    <img src="Visualizer_files/pm_only_arm.svg" width="400" height="400" id = "arms" 
+    <img src="Visualizer_files/bench.svg" width="400" height="400"
+    style="position: absolute; bottom: 0; left: 0">
+    <img src="Visualizer_files/pm_arm_r.svg" width="400" height="400" id = "r-arm"
     style="position: absolute; bottom: 0px; left: 0;">
+    <img src="Visualizer_files/pm_body.svg" width="400" height="400"
+    style="position: absolute; bottom: 0; left: 0">
+    <img src="Visualizer_files/pm_arm_l.svg" width="400" height="400" id = "l-arm"
+    style="position: absolute; bottom: 0; left: 0"> 
     <div></div>
     <img src="Visualizer_files/body.svg" width="400" height="400" id="body"
     style="position: absolute; bottom: 0; left: 400px">
@@ -60,7 +66,8 @@
   
   <script type="text/javascript">
       function anim() {
-        var arms = document.getElementById("arms");
+        var arms = document.getElementById("l-arm");
+        var arms2 = document.getElementById("r-arm");
         var head = document.getElementById("head");
 
         var rect = document.getElementsByClassName("active");
@@ -69,6 +76,7 @@
           var diff = y/20;
           if (diff > 0){
             arms.style.bottom = diff + 'px';
+            arms2.style.bottom = (10 - diff) + 'px';
             var rot = -5 + y/50
             // leg1.style.transform = 'rotate(-' + diff + 'deg)';
             // leg2.style.transform = 'rotate(-' + diff + 'deg)';
